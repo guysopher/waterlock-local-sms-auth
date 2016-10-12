@@ -24,8 +24,8 @@
   "_shrinkwrap": null,
   "_spec": "waterlock-local-auth",
   "author": {
-    "email": "chirag200666@gmail.com",
-    "name": "Chirag Choudhary"
+    "email": "guysopher@gmail.com",
+    "name": "Guy Sopher"
   },
   "dependencies": {
     "bcrypt": "~0.8.5",

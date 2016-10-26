@@ -25,7 +25,7 @@ authMethod: [
           secret: 'YOUR_TWILIO_AUTH_TOKEN',
         },
         from: 'SENDER_PHONE_NUMBER', //it is recommended to use your twilio phone number (with + and the country prefix)
-        message: '{smsCode} is you one time password' //the {smsCode} will be replaced with the OTP. Keep it in the begining of the message to make sure it is seen in the message preview
+        message: '{smsCode} is your one time password' //the {smsCode} will be replaced with the sms-code. Keep it in the begining of the message to make sure it is seen in the message preview
       },
       testAccount: { // the test account will not send sms codes and has a fixed password (used for devlopment or testing)
         phone: 'TEST_PHONE_NUMBER',

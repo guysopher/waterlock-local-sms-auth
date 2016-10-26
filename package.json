@@ -62,10 +62,6 @@
   "name": "waterlock-phone-sms-auth",
   "optionalDependencies": {},
   "preferGlobal": false,
-  "readme": "README.md",
-  "scripts": {
-    "test": "make test"
-  },
   "homepage": "https://github.com/guysopher/waterlock-phone-sms-auth",
   "repository": "guysopher/waterlock-phone-sms-auth",
   "bugs": {

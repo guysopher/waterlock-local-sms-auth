@@ -1,42 +1,37 @@
-# waterlock-local-sms-auth
-local authentication using phone &amp; code for waterlock
+# waterlock-phone-sms-auth
 
-waterlock-local-sms-auth is a module for [waterlock](http://waterlock.ninja/)
+local authentication using phone &amp; sms code for waterlock
+
+waterlock-phone-sms-auth is a module for [waterlock](http://waterlock.ninja/)
 providing a local authentication method for users based on phone number and sms code.
-Its a adaptation of waterlock-local-auth code but for inputs for authenticaltion.
-Also serves as a sample code for somebody who wants to modify waterlock-local-auth.
 
-## Usage
+It's a complete version of waterlock-local-sms-auth, with simplified api and connection to twillio.
+
+## Installation
 
 ```bash
-npm install waterlock-local-sms-auth
+npm install waterlock-phone-sms-auth
 ```
 
 set the following option in your `waterlock.js` config file
 
 ```js
-authMethod:[
-	{
-		name: "waterlock-local-auth",
-		passwordReset: {
-			tokens: boolean, // object containing information regarding password resets
-
-			// object containing information about your smtp server, see nodemailer
-			mail: {
-				options: string, // how it is use te transport method, see nodemailer
-				from: string, // the from address
-				subject: string, // the email subject for password reset emails
-				forwardUrl: string // the url to send the user to after they have clicked the password reset link in their inbox (e.g. a form on your site which POST to `/auth/reset`)
-			},
-
-			// object containing template information for the reset emails
-			template:{
-				file: string, // the relative path to the `jade` template for the reset emails
-				vars: object, // object containing any vars you want passed to the template for rendering
-			}
-		},
-		createOnNotFound: boolean // should local auth try to create the user on a failed login attempt, good if you do not want to implement a registration form.
-	}
+authMethod: [
+    {
+      name:'waterlock-local-sms-auth',
+      sms: {
+        twilio: {
+          appId: 'YOUR_TWILIO_ACCOUNT_SID',
+          secret: 'YOUR_TWILIO_AUTH_TOKEN',
+        },
+        from: 'SENDER_PHONE_NUMBER', //it is recommended to use your twilio phone number (with + and the country prefix)
+        message: '{smsCode} is you one time password' //the {smsCode} will be replaced with the OTP. Keep it in the begining of the message to make sure it is seen in the message preview
+      },
+      testAccount: { // the test account will not send sms codes and has a fixed password (used for devlopment or testing)
+        phone: 'TEST_PHONE_NUMBER',
+        code: '1234'
+      }
+    }
 ]
 ```
 
@@ -52,18 +47,32 @@ Local auth adds the following attributes onto the Auth model
     type: 'string',
     minLength: 4
   },
-  resetToken: {
-    model: 'resetToken'
-  }
 ```
+## Usage
+With phone authentication, the api is really simple, the passwords are temporary and no 'forgot password' option is neccessary.
+There are two apis that you need to use:
+### Register a new user / regenerate sms-code
+`
+POST /auth/register
+body: {
+  phone: 'FULL_PHONE_NUMBER',
+  sendSms: true
+`
+This api will create a new user if needed and will generate a new password.
+It can also be used to regenerate a password for a signed in user
+If the `sendSms` parameter is set to 'true' twilio will be used to send the password in an SMS
+The password will be valid for 5 minutes
 
-if you choose to go with this option then a user upon visiting the url `/auth/reset` with a post param of `email` will receieve an email at that address with the reset url. This url upon clicked with be validated against the server to ensure it's still within the time window allotted for a password reset. If so will set the `resetToken` session variable. After this if you have set a `forwardUrl` in your `waterlock.js` config file the user will be forwarded to this page.
+### Log in a user using a sms-code
+`
+POST /auth/login
+body: {
+  phone: 'FULL_PHONE_NUMBER',
+  smsCode: 'CODE_FROM_SMS'
+}
+`
+This api will login an exisiting user using a sms-code.
+It will verify the user's saved sms-code with the one in the body and will check that the code is not older than 5 minutes. If the compare is successful, the user will be logged-in.
+If the phone matches the testAccount phone, it will compare the smsCode to the smsCode in the testAccount
 
-Your user can simply try to login to `/login` if the user is not found one will be created using [waterlines](https://github.com/balderdashy/waterline) `findOrCreate` method
-
-TODOs:
-* Improve documentation & remove username, email & passwordReset from places its not required.
-* Autogenerate a new sms code when a phone number is received.
-* Add twillio or some sms api to send sms.
-* Check the resetToken using the old token.
-* write test cases(fix) for the code.
+That's it, the simplest and secured auth method

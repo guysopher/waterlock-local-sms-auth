@@ -5,7 +5,7 @@ local authentication using phone &amp; sms code for waterlock
 waterlock-phone-sms-auth is a module for [waterlock](http://waterlock.ninja/)
 providing a local authentication method for users based on phone number and sms code.
 
-It's a complete version of waterlock-local-sms-auth, with simplified api and connection to twillio.
+It's a reworked version of waterlock-local-sms-auth, with simplified api and connection to twillio.
 
 ## Installation
 
@@ -13,7 +13,7 @@ It's a complete version of waterlock-local-sms-auth, with simplified api and con
 npm install waterlock-phone-sms-auth
 ```
 
-set the following option in your `waterlock.js` config file
+Add the following option in your `waterlock.js` config file
 
 ```js
 authMethod: [

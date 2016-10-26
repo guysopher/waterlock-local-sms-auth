@@ -1,18 +1,18 @@
 {
   "_args": [
     [
-      "waterlock-local-sms-auth"
+      "waterlock-phone-sms-auth"
     ]
   ],
-  "_from": "waterlock-local-sms-auth@latest",
+  "_from": "waterlock-phone-sms-auth@latest",
   "_inCache": true,
   "_installable": true,
-  "_location": "/waterlock-local-sms-auth",
+  "_location": "/waterlock-phone-sms-auth",
   "_npmVersion": "1.4.28",
   "_phantomChildren": {},
   "_requested": {
-    "name": "waterlock-local-sms-auth",
-    "raw": "waterlock-local-sms-auth",
+    "name": "waterlock-phone-sms-auth",
+    "raw": "waterlock-phone-sms-auth",
     "rawSpec": "",
     "scope": null,
     "spec": "latest",
@@ -22,7 +22,7 @@
     "#USER"
   ],
   "_shrinkwrap": null,
-  "_spec": "waterlock-local-auth",
+  "_spec": "waterlock-phone-sms-auth",
   "author": {
     "email": "guysopher@gmail.com",
     "name": "Guy Sopher"
@@ -36,7 +36,7 @@
     "node-uuid": "~1.4.2",
     "nodemailer": "1.4.0"
   },
-  "description": "local authentication using phone & code for waterlock",
+  "description": "Local authentication using phone & temporary code via SMS for waterlock",
   "devDependencies": {
     "coveralls": "*",
     "istanbul": "*",
@@ -59,10 +59,10 @@
   "license": "MIT",
   "main": "index.js",
 
-  "name": "waterlock-local-sms-auth",
+  "name": "waterlock-phone-sms-auth",
   "optionalDependencies": {},
   "preferGlobal": false,
-  "readme": "ERROR: No README data found!",
+  "readme": "Readme.md",
   "scripts": {
     "test": "make test"
   },

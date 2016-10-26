@@ -64,7 +64,7 @@ It can also be used to regenerate a password for a signed in user
 If the `sendSms` parameter is set to 'true' twilio will be used to send the password in an SMS
 The password will be valid for 5 minutes
 
-### Log in a user using a sms-code
+### Login an existing user using a sms-code
 ```
 POST /auth/login
 body: {

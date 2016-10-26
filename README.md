@@ -52,25 +52,26 @@ Local auth adds the following attributes onto the Auth model
 With phone authentication, the api is really simple, the passwords are temporary and no 'forgot password' option is neccessary.
 There are two apis that you need to use:
 ### Register a new user / regenerate sms-code
-`
+```
 POST /auth/register
 body: {
   phone: 'FULL_PHONE_NUMBER',
   sendSms: true
-`
+}
+```
 This api will create a new user if needed and will generate a new password.
 It can also be used to regenerate a password for a signed in user
 If the `sendSms` parameter is set to 'true' twilio will be used to send the password in an SMS
 The password will be valid for 5 minutes
 
 ### Log in a user using a sms-code
-`
+```
 POST /auth/login
 body: {
   phone: 'FULL_PHONE_NUMBER',
   smsCode: 'CODE_FROM_SMS'
 }
-`
+```
 This api will login an exisiting user using a sms-code.
 It will verify the user's saved sms-code with the one in the body and will check that the code is not older than 5 minutes. If the compare is successful, the user will be logged-in.
 If the phone matches the testAccount phone, it will compare the smsCode to the smsCode in the testAccount

@@ -6,7 +6,7 @@ var proxyquire = testHelper.proxyquire;
 describe('utils',function(){
   var utils = proxyquire('../lib/utils',
     {
-      './waterlock-local-sms-auth': waterlock,
+      './waterlock-phone-sms-auth': waterlock,
       'path': {
         normalize: function(str) {
           return __dirname+"/email.test.jade";
@@ -26,7 +26,7 @@ describe('utils',function(){
     });
 
     it('should error', function(done) {
-      utils = proxyquire('../lib/utils', {'./waterlock-local-sms-auth': {}});
+      utils = proxyquire('../lib/utils', {'./waterlock-phone-sms-auth': {}});
       (function(){ utils.getHtmlEmail({owner: "test", resetToken: "token"})}).should.throwError('No config file defined, try running [waterlock install config]')
       done()
     });

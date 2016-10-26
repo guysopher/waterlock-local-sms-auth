@@ -9,7 +9,7 @@ var pathStub = {
   }
 }
 
-exports.waterlock_local = proxyquire.noCallThru().load('../lib/waterlock-local-sms-auth', 
+exports.waterlock_local = proxyquire.noCallThru().load('../lib/waterlock-phone-sms-auth',
   { 
     'path': pathStub
   });

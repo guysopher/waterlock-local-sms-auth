@@ -23,7 +23,7 @@ module.exports.waterlock = {
   // of the local authentication method with password reset tokens disabled.
   authMethod: [
     {
-      name:"waterlock-local-sms-auth",
+      name:"waterlock-phone-sms-auth",
       passwordReset:{
         tokens: false,
         mail: {

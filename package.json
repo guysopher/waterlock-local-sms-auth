@@ -62,7 +62,7 @@
   "name": "waterlock-phone-sms-auth",
   "optionalDependencies": {},
   "preferGlobal": false,
-  "readme": "Readme.md",
+  "readme": "README.md",
   "scripts": {
     "test": "make test"
   },

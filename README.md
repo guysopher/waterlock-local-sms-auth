@@ -55,6 +55,7 @@ There are two apis that you need to use:
 ```
 POST /auth/register
 body: {
+  type: 'phone-sms',
   phone: 'FULL_PHONE_NUMBER',
   sendSms: true
 }
@@ -68,6 +69,7 @@ The password will be valid for 5 minutes
 ```
 POST /auth/login
 body: {
+  type: 'phone-sms',
   phone: 'FULL_PHONE_NUMBER',
   smsCode: 'CODE_FROM_SMS'
 }

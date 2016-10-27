@@ -18,7 +18,7 @@ Add the following option in your `waterlock.js` config file
 ```js
 authMethod: [
     {
-      name:'waterlock-local-sms-auth',
+      name:'waterlock-phone-sms-auth',
       sms: {
         twilio: {
           appId: 'YOUR_TWILIO_ACCOUNT_SID',

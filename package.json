@@ -1,28 +1,8 @@
 {
-  "_args": [
-    [
-      "waterlock-phone-sms-auth"
-    ]
-  ],
-  "_from": "waterlock-phone-sms-auth@latest",
-  "_inCache": true,
-  "_installable": true,
-  "_location": "/waterlock-phone-sms-auth",
-  "_npmVersion": "1.4.28",
-  "_phantomChildren": {},
-  "_requested": {
-    "name": "waterlock-phone-sms-auth",
-    "raw": "waterlock-phone-sms-auth",
-    "rawSpec": "",
-    "scope": null,
-    "spec": "latest",
-    "type": "tag"
-  },
-  "_requiredBy": [
-    "#USER"
-  ],
-  "_shrinkwrap": null,
-  "_spec": "waterlock-phone-sms-auth",
+  "name": "waterlock-phone-sms-auth",
+  "description": "Local authentication using phone & temporary code via SMS for waterlock",
+  "version": "0.1.6",
+  "homepage": "https://github.com/guysopher/waterlock-phone-sms-auth",
   "author": {
     "email": "guysopher@gmail.com",
     "name": "Guy Sopher"
@@ -36,7 +16,6 @@
     "node-uuid": "~1.4.2",
     "nodemailer": "1.4.0"
   },
-  "description": "Local authentication using phone & temporary code via SMS for waterlock",
   "devDependencies": {
     "coveralls": "*",
     "istanbul": "*",
@@ -58,14 +37,9 @@
   ],
   "license": "MIT",
   "main": "index.js",
-
-  "name": "waterlock-phone-sms-auth",
-  "optionalDependencies": {},
   "preferGlobal": false,
-  "homepage": "https://github.com/guysopher/waterlock-phone-sms-auth",
   "repository": "guysopher/waterlock-phone-sms-auth",
   "bugs": {
     "url": "https://github.com/guysopher/waterlock-phone-sms-auth/issues"
   },
-  "version": "0.1.5"
 }
